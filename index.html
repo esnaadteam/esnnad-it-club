@@ -1,0 +1,1694 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نادي إسناد لتكنولوجيا المعلومات - جامعة جدارا</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* الألوان الأساسية المعدلة */
+            --primary-purple: #9a5bdf; /* بنفسجي أفتح */
+            --primary-purple-dark: #7b3cc0; /* درجته الداكنة */
+            --primary-blue: #3498db;
+            --primary-red: #e74c3c;
+            --primary-yellow: #f1c40f;
+            --primary-yellow-dark: #f39c12;
+            
+            /* الألوان الفاتحة */
+            --light-bg: #f8f9fa;
+            --light-card: #ffffff;
+            --light-text: #2c3e50;
+            --light-nav: #ffffff;
+            
+            /* الألوان الداكنة المعدلة */
+            --dark-bg: #1a1a2e; /* خلفية أفتح قليلاً */
+            --dark-card: #1e1e3f; /* بطاقات أفتح */
+            --dark-text: #e6e6e6; /* نص أبيض ناعم */
+            --dark-nav: #1a1a3a; /* شريط تنقل أفتح */
+            
+            /* الألوان الحالية */
+            --primary: var(--primary-purple);
+            --secondary: var(--primary-red);
+            --accent: var(--primary-yellow);
+            --background: var(--light-bg);
+            --text: var(--light-text);
+            --card: var(--light-card);
+            --nav: var(--light-nav);
+            
+            /* الظلال المعدلة */
+            --shadow: 0 4px 15px rgba(154, 91, 223, 0.2); /* ظلال أخف */
+            --shadow-hover: 0 8px 20px rgba(154, 91, 223, 0.3);
+            --shadow-blue: 0 4px 20px rgba(154, 91, 223, 0.4);
+            --shadow-yellow: 0 4px 20px rgba(241, 196, 15, 0.3);
+            --shadow-nav: 0 4px 15px rgba(0, 0, 0, 0.1);
+            
+            /* الزوايا */
+            --radius: 12px;
+            --radius-small: 6px;
+            
+            /* التدرجات المعدلة */
+            --gradient-blue: linear-gradient(135deg, var(--primary-purple), var(--primary-purple-dark));
+            --gradient-yellow: linear-gradient(135deg, var(--primary-yellow), var(--primary-yellow-dark));
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+            direction: rtl;
+            transition: background-color 0.5s ease, color 0.3s ease;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2rem;
+            color: var(--primary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            right: 50%;
+            transform: translateX(50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient-blue);
+            border-radius: 2px;
+        }
+
+        /* شريط التنقل المعدل */
+        header {
+            background-color: var(--nav);
+            box-shadow: var(--shadow-nav);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+            filter: drop-shadow(0 2px 5px rgba(154, 91, 223, 0.3));
+        }
+
+        .logo h1 {
+            font-size: 1.3rem;
+            background: var(--gradient-blue);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(154, 91, 223, 0.2);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: var(--radius-small);
+            transition: all 0.3s;
+            position: relative;
+            font-size: 1rem;
+            text-decoration: none;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 15px;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-blue);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: calc(100% - 24px);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.1rem;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(30deg);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .burger {
+            font-size: 1.4rem;
+            cursor: pointer;
+            display: none;
+            padding: 5px;
+            border-radius: var(--radius-small);
+            box-shadow: var(--shadow);
+            background: none;
+            border: none;
+            color: var(--text);
+        }
+
+        /* القسم الرئيسي */
+        .hero {
+            height: 100vh;
+            min-height: 600px;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            margin-top: 70px;
+        }
+
+        .hero-content {
+            width: 100%;
+            padding: 0 20px;
+        }
+
+        .hero-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffffff, #dddddd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            padding: 0 10px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            color: white;
+            border-radius: var(--radius);
+            font-weight: 500;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-blue {
+            background: var(--gradient-blue);
+        }
+
+        .btn-red {
+            background: linear-gradient(135deg, var(--primary-red), #c0392b);
+        }
+
+        .btn-yellow {
+            background: var(--gradient-yellow);
+            color: #2c3e50;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* قسم عن النادي */
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .about-text {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-hover);
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+            object-fit: cover;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05) rotate(1deg);
+        }
+
+        .vision-mission {
+            background-color: var(--card);
+            border-radius: var(--radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            margin-top: 20px;
+            border: 1px solid rgba(154, 91, 223, 0.1);
+            width: 100%;
+        }
+
+        .vision-mission h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .vision-mission h3::before {
+            content: '';
+            width: 8px;
+            height: 25px;
+            background: var(--gradient-blue);
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        .vision-mission ul {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding-right: 15px;
+            list-style: none;
+        }
+
+        .vision-mission li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            position: relative;
+            padding-right: 15px;
+        }
+
+        .vision-mission li::before {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 10px;
+            width: 6px;
+            height: 6px;
+            background-color: var(--primary);
+            border-radius: 50%;
+        }
+
+        /* قسم المكتبة الرقمية */
+        .library {
+            background-color: var(--card);
+            border-radius: var(--radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(154, 91, 223, 0.1);
+            margin: 20px 0;
+        }
+
+        .library-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .library-item {
+            background-color: var(--background);
+            border-radius: var(--radius-small);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            transition: all 0.3s;
+            box-shadow: var(--shadow-blue);
+            border: 1px solid rgba(154, 91, 223, 0.1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .library-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-blue);
+            transition: all 0.3s;
+        }
+
+        .library-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .library-item:hover::after {
+            height: 6px;
+        }
+
+        .library-item i {
+            font-size: 2.2rem;
+            color: var(--primary);
+            background: rgba(154, 91, 223, 0.1);
+            width: 55px;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .library-item h3 {
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .library-item p {
+            color: var(--text);
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        .library-item .btn {
+            align-self: flex-start;
+            margin-top: auto;
+            font-size: 0.85rem;
+            padding: 8px 15px;
+        }
+
+        /* قسم مشاريع الأعضاء المعدل */
+        .members-projects {
+            background-color: var(--card);
+            border-radius: var(--radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(154, 91, 223, 0.1);
+            margin: 20px 0;
+        }
+
+        .projects-filter {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            background-color: var(--background);
+            border: none;
+            border-radius: var(--radius-small);
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(154, 91, 223, 0.1);
+            font-size: 0.9rem;
+        }
+
+        .filter-btn.active {
+            background: var(--gradient-blue);
+            color: white;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .project-card {
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+            background-color: var(--background);
+            border: 1px solid rgba(154, 91, 223, 0.1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .project-info {
+            padding: 18px;
+        }
+
+        .project-info h3 {
+            margin-bottom: 8px;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .project-info p {
+            color: var(--text);
+            opacity: 0.9;
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+        }
+
+        .project-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+
+        .skill-tag {
+            background-color: rgba(154, 91, 223, 0.2);
+            color: var(--primary);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 8px;
+        }
+
+        .project-links a {
+            padding: 6px 12px;
+            border-radius: var(--radius-small);
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .demo-link {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .demo-link:hover {
+            background-color: var(--primary-purple-dark);
+        }
+
+        /* قسم التواصل */
+        .contact-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .contact-card {
+            background-color: var(--card);
+            border-radius: var(--radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 15px;
+            transition: all 0.3s;
+            border: 1px solid rgba(154, 91, 223, 0.1);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--gradient-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-card h3 {
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .contact-card p {
+            color: var(--text);
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-links a {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: var(--background);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text);
+            transition: all 0.3s;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(154, 91, 223, 0.1);
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background: var(--gradient-blue);
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* تأثيرات الحركة */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+
+        /* تأثيرات خاصة */
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* New styles for the additional content */
+        .goals-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 25px;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 8px 16px;
+            background-color: var(--background);
+            border: none;
+            border-radius: var(--radius-small);
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(154, 91, 223, 0.1);
+            font-size: 0.9rem;
+        }
+
+        .tab-btn.active {
+            background: var(--gradient-blue);
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .goal-item {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .goal-icon {
+            background-color: rgba(154, 91, 223, 0.1);
+            color: var(--primary);
+            padding: 5px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 22px;
+            height: 22px;
+            margin-top: 3px;
+            font-size: 0.8rem;
+        }
+
+        .goal-text {
+            color: var(--text);
+            font-size: 0.95rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .stat-card {
+            background-color: var(--card);
+            border-radius: var(--radius);
+            padding: 18px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+            border: 1px solid rgba(154, 91, 223, 0.1);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgba(154, 91, 223, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px;
+            color: var(--primary);
+            font-size: 1.3rem;
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: var(--text);
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* قسم فريق العمل المعدل */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .team-card {
+            background-color: var(--card);
+            border-radius: var(--radius);
+            padding: 18px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+            border: 1px solid rgba(154, 91, 223, 0.1);
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .team-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 12px;
+            border: 3px solid var(--primary);
+            box-shadow: var(--shadow);
+        }
+
+        .team-name {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .team-role {
+            color: var(--text);
+            opacity: 0.8;
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+        }
+
+        .team-social {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .team-social a {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: var(--background);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text);
+            transition: all 0.3s;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(154, 91, 223, 0.1);
+            font-size: 0.9rem;
+            text-decoration: none;
+        }
+
+        .team-social a:hover {
+            background: var(--gradient-blue);
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* قسم الفعاليات الجديد */
+        .events-container {
+            background-color: var(--card);
+            border-radius: var(--radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            margin-top: 30px;
+            border: 1px solid rgba(154, 91, 223, 0.1);
+        }
+
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .event-card {
+            background-color: var(--background);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+            border: 1px solid rgba(154, 91, 223, 0.1);
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .event-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .event-info {
+            padding: 15px;
+        }
+
+        .event-date {
+            display: inline-block;
+            background-color: rgba(154, 91, 223, 0.1);
+            color: var(--primary);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+        }
+
+        .event-title {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .event-description {
+            color: var(--text);
+            opacity: 0.9;
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+
+        .event-location {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--text);
+            opacity: 0.8;
+            font-size: 0.85rem;
+        }
+
+        /* تأثيرات الظل حسب الوضع */
+        body.dark-mode {
+            --shadow: 0 4px 15px rgba(154, 91, 223, 0.2);
+            --shadow-hover: 0 8px 20px rgba(154, 91, 223, 0.3);
+        }
+
+        /* التصميم المتجاوب */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            section {
+                padding: 50px 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                width: 80%;
+                height: calc(100vh - 70px);
+                background-color: var(--nav);
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                padding: 25px;
+                transition: right 0.5s;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 10px 0;
+                width: 100%;
+            }
+            
+            .nav-links a {
+                display: block;
+                padding: 12px 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                font-size: 1.1rem;
+            }
+            
+            .burger {
+                display: block;
+            }
+            
+            .hero-content h2 {
+                font-size: 1.8rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            .hero-content h2 {
+                font-size: 1.6rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-cards, 
+            .projects-grid,
+            .library-grid,
+            .stats-grid,
+            .team-grid,
+            .events-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .logo h1 {
+                font-size: 1.1rem;
+            }
+
+            .logo img {
+                height: 35px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .section-title {
+                font-size: 1.4rem;
+            }
+
+            .hero-content h2 {
+                font-size: 1.4rem;
+            }
+
+            .btn {
+                padding: 10px 18px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- شريط التنقل -->
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="https://i.ibb.co/qLk7ZYZT/bng.png" alt="شعار نادي إسناد">
+                <h1>إسناد IT Club</h1>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#about">عن النادي</a></li>
+                <li><a href="#goals">أهدافنا</a></li>
+                <li><a href="#library">المكتبة الرقمية</a></li>
+                <li><a href="#projects">مشاريع الأعضاء</a></li>
+                <li><a href="#team">فريقنا</a></li>
+                <li><a href="#contact">تواصل معنا</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="burger">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- القسم الرئيسي -->
+    <section id="home" class="hero">
+        <div id="particles-js"></div>
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h2 class="floating">نادي إسناد لتكنولوجيا المعلومات</h2>
+                <p>منصة طلاب جامعة جدارا للإبداع التقني وتبادل المعرفة في مجال تكنولوجيا المعلومات والبرمجة</p>
+                <div class="hero-buttons">
+                    <a href="#library" class="btn btn-blue pulse">استكشف المكتبة الرقمية</a>
+                    <a href="#projects" class="btn btn-red">شاهد مشاريع الأعضاء</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم عن النادي -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title fade-in">عن النادي</h2>
+            <div class="about-content">
+                <div class="about-text fade-in delay-1">
+                    <h3>تعريف النادي</h3>
+                    <p>نادي إسناد لتكنولوجيا المعلومات هو مجتمع طلابي يهدف إلى تطوير مهارات الطلاب التقنية والبرمجية، وتنمية قدراتهم العملية والأكاديمية من خلال أنشطة تعليمية، تطبيقية، وتنافسية.</p>
+                    
+                    <div class="vision-mission fade-in delay-2">
+                        <h3>رؤية 2026</h3>
+                        <ul>
+                            <li>أن يصبح النادي مركًزا ريادًيا على مستوى الجامعة في تطوير مهارات تكنولوجيا المعلومات</li>
+                            <li>رفع المستوى الأكاديمي والعملي للطلاب المشاركين بالنادي بشكل ملحوظ</li>
+                            <li>تأهيل الطلاب بأساسيات قوية تؤهلهم للتميز في دراستهم ومشاريعهم التقنية</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="about-image fade-in delay-3">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="صورة عن النادي" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الأهداف -->
+    <section id="goals" class="goals">
+        <div class="container">
+            <h2 class="section-title fade-in">أهدافنا</h2>
+            
+            <div class="goals-tabs fade-in delay-1">
+                <button class="tab-btn active" data-tab="education-content">التعليمي</button>
+                <button class="tab-btn" data-tab="technical-content">التقني</button>
+                <button class="tab-btn" data-tab="social-content">الاجتماعي</button>
+            </div>
+            
+            <div class="tab-content active" id="education-content">
+                <div class="vision-mission">
+                    <h3>الهدف التعليمي</h3>
+                    <ul>
+                        <li class="goal-item">
+                            <span class="goal-icon"><i class="fas fa-check"></i></span>
+                            <span class="goal-text">تعزيز مهارات الطلاب في مجال تكنولوجيا المعلومات والبرمجة من خلال ورش عمل ودورات تدريبية متخصصة.</span>
+                        </li>
+                        <li class="goal-item">
+                            <span class="goal-icon"><i class="fas fa-check"></i></span>
+                            <span class="goal-text">تنظيم مسابقات وهاكاثونات لتحفيز الإبداع والتنافس البناء بين الطلاب.</span>
+                        </li>
+                        <li class="goal-item">
+                            <span class="goal-icon"><i class="fas fa-check"></i></span>
+                            <span class="goal-text">تعزيز التعاون مع مبادرة سمو ولي العهد في مجالات التعليم والتطوير، والعمل على تحقيق رؤية سموه في تحسين مستوى التعليم وتطوير مهارات الشباب.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="technical-content">
+                <div class="vision-mission">
+                    <h3>الهدف التقني</h3>
+                    <ul>
+                        <li class="goal-item">
+                            <span class="goal-icon"><i class="fas fa-check"></i></span>
+                            <span class="goal-text">تطوير مشاريع تقنية تخدم المجتمع الجامعي والمحلي.</span>
+                        </li>
+                        <li class="goal-item">
+                            <span class="goal-icon"><i class="fas fa-check"></i></span>
+                            <span class="goal-text">تعزيز استخدام التقنيات الحديثة في حل المشكلات.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="social-content">
+                <div class="vision-mission">
+                    <h3>الهدف الاجتماعي</h3>
+                    <ul>
+                        <li class="goal-item">
+                            <span class="goal-icon"><i class="fas fa-check"></i></span>
+                            <span class="goal-text">بناء مجتمع طلابي متعاون في مجال تكنولوجيا المعلومات.</span>
+                        </li>
+                        <li class="goal-item">
+                            <span class="goal-icon"><i class="fas fa-check"></i></span>
+                            <span class="goal-text">تعزيز التواصل بين الطلاب والخريجين والخبراء في المجال.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الإحصائيات -->
+    <section id="stats" class="stats">
+        <div class="container">
+            <h2 class="section-title fade-in">إحصائيات النادي</h2>
+            <p class="text-center mb-8 fade-in delay-1">نفخر بمساهمتنا في خدمة المجتمع من خلال أنشطتنا المختلفة. إليكم آخر إحصائياتنا:</p>
+            
+            <div class="stats-grid fade-in delay-2">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">متطوع</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">مستفيد</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <div class="stat-number">1+</div>
+                    <div class="stat-label">مشروع وفعالية</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم المكتبة الرقمية -->
+    <section id="library" class="library">
+        <div class="container">
+            <h2 class="section-title fade-in">المكتبة الرقمية</h2>
+            <div class="library-grid fade-in delay-1">
+                <!-- C++ الجزء الأول -->
+                <div class="library-item">
+                    <i class="fas fa-file-code"></i>
+                    <h3>C++ الجزء الأول</h3>
+                    <p>أساسيات البرمجة بلغة C++ للمبتدئين</p>
+                    <a href="https://drive.google.com/drive/folders/1UYk0appLh7mvXJHfWJ-RTseueEgPZUnz?usp=sharing" target="_blank" class="btn btn-blue">عرض المحتوى</a>
+                </div>
+                
+                <!-- C++ الجزء الثاني -->
+                <div class="library-item">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>C++ الجزء الثاني</h3>
+                    <p>مواضيع متقدمة في البرمجة</p>
+                    <a href="https://drive.google.com/file/d/YOUR_CPP2_FILE_ID/view?usp=sharing" target="_blank" class="btn btn-blue">عرض المحتوى</a>
+                </div>
+                
+                <!-- HTML + CSS -->
+                <div class="library-item">
+                    <i class="fab fa-html5"></i>
+                    <h3>تطوير الويب</h3>
+                    <p>دليل شامل لـ HTML5 و CSS3</p>
+                    <a href="https://drive.google.com/file/d/YOUR_WEB_FILE_ID/view?usp=sharing" target="_blank" class="btn btn-blue">عرض المحتوى</a>
+                </div>
+                
+                <!-- Intro to IT -->
+                <div class="library-item">
+                    <i class="fas fa-info-circle"></i>
+                    <h3>Introduction IT</h3>
+                    <p>أساسيات الشبكات وأنظمة التشغيل</p>
+                    <a href="https://drive.google.com/file/d/YOUR_IT_FILE_ID/view?usp=sharing" target="_blank" class="btn btn-blue">عرض المحتوى</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم مشاريع الأعضاء المعدل -->
+    <section id="projects" class="members-projects">
+        <div class="container">
+            <h2 class="section-title fade-in">مشاريع الأعضاء</h2>
+            <div class="projects-filter fade-in delay-1">
+                <button class="filter-btn active" data-filter="all">الكل</button>
+                <button class="filter-btn" data-filter="web">تطوير الويب</button>
+                <button class="filter-btn" data-filter="mobile">تطبيقات الجوال</button>
+                <button class="filter-btn" data-filter="ai">الذكاء الاصطناعي</button>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card fade-in delay-2" data-category="web">
+                    <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="مشروع نظام إدارة المحتوى" loading="lazy">
+                    <div class="project-info">
+                        <h3>نظام إدارة المحتوى</h3>
+                        <p>نظام متكامل لإدارة محتوى المواقع الإلكترونية</p>
+                        <div class="project-skills">
+                            <span class="skill-tag">HTML</span>
+                            <span class="skill-tag">CSS</span>
+                            <span class="skill-tag">JavaScript</span>
+                        </div>
+                        <div class="project-links">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card fade-in delay-3" data-category="ai">
+                    <img src="https://i.postimg.cc/QxFyWTw8/Whats-App-Image-2025-04-28-at-15-52-42-0c3067f6.jpg" alt="مشروع Green Eye" loading="lazy">
+                    <div class="project-info">
+                        <h3>روبوت لمراقبة النباتات</h3>
+                        <p>روبوت تم صناعتة وتجميعه من قبل المؤسسين يهدف الى تطوير قطاع الزراعة يعمل بكاميره بالذكاء الاصطناعي</p>
+                        <div class="project-skills">
+                            <span class="skill-tag">Python</span>
+                        </div>
+                        <div class="project-links">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card fade-in delay-4" data-category="ai" >
+                    <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="مشروع نظام التوصيات" loading="lazy">
+                    <div class="project-info">
+                        <h3>نظام التوصيات</h3>
+                        <p>نظام توصيات للكتب والمصادر التعليمية</p>
+                        <div class="project-skills">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">TensorFlow</span>
+                        </div>
+                        <div class="project-links">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الفعاليات الجديد -->
+    <section id="events" class="events">
+        <div class="container">
+            <h2 class="section-title fade-in">الفعاليات القادمة</h2>
+            
+            <div class="events-container fade-in delay-1">
+                <div class="events-grid">
+                    <!-- فعالية 1 -->
+                    <div class="event-card">
+                        <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="هاكاثون البرمجة" class="event-image" loading="lazy">
+                        <div class="event-info">
+                            <span class="event-date">15 يونيو 2025</span>
+                            <h3 class="event-title">هاكاثون البرمجة السنوي</h3>
+                            <p class="event-description">مسابقة برمجة لمدة 24 ساعة لطلاب الجامعة لتطوير حلول تقنية مبتكرة</p>
+                            <div class="event-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>قاعة المؤتمرات - جامعة جدارا</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- فعالية 2 -->
+                    <div class="event-card">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="ورشة الذكاء الاصطناعي" class="event-image" loading="lazy">
+                        <div class="event-info">
+                            <span class="event-date">22 يونيو 2025</span>
+                            <h3 class="event-title">ورشة الذكاء الاصطناعي</h3>
+                            <p class="event-description">ورشة عملية لمدة يومين تغطي أساسيات الذكاء الاصطناعي وتعلم الآلة</p>
+                            <div class="event-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>معمل الحاسوب - كلية تكنولوجيا المعلومات</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- فعالية 3 -->
+                    <div class="event-card">
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="ملتقى التوظيف التقني" class="event-image" loading="lazy">
+                        <div class="event-info">
+                            <span class="event-date">5 يوليو 2025</span>
+                            <h3 class="event-title">ملتقى التوظيف التقني</h3>
+                            <p class="event-description">فرصة للقاء مع كبرى الشركات التقنية وفرص التدريب والتوظيف</p>
+                            <div class="event-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>المبنى الرئيسي - جامعة جدارا</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- قسم فريق العمل المعدل -->
+<section id="team" class="team">
+    <div class="container">
+        <h2 class="section-title fade-in">فريق العمل</h2>
+        <p class="text-center mb-8 fade-in delay-1">تأسس نادي إسناد على يد مجموعة من الطلاب المبدعين الذين يؤمنون بأهمية العمل التطوعي والتعليمي في المجتمع</p>
+        
+        <div class="team-grid fade-in delay-2">
+            <div class="team-card">
+                <h3 class="team-name">محمد ملكاوي</h3>
+                <p class="team-role">المؤسس</p>
+                <div class="team-social">
+                   
+                </div>
+            </div>
+            
+            <div class="team-card">
+                <h3 class="team-name">يوسف بدوان</h3>
+                <p class="team-role">المؤسس</p>
+                <div class="team-social">
+                    
+                </div>
+            </div>
+            
+            <div class="team-card">
+                <h3 class="team-name">رغد بني مصطفى</h3>
+                <p class="team-role">المؤسس</p>
+                <div class="team-social">
+                
+                </div>
+            </div>
+            
+            <div class="team-card">
+                <h3 class="team-name">لجين سلام</h3>
+                <p class="team-role">المؤسس</p>
+                <div class="team-social">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    <!-- قسم التواصل -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title fade-in">تواصل معنا</h2>
+            
+            <div class="contact-cards fade-in delay-1">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>البريد الإلكتروني</h3>
+                    <p>esnaadteamjo@gmail.com</p>
+                    <a href="mailto:esnaadteamjo@gmail.com" class="btn btn-blue">إرسال بريد</a>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>الهاتف</h3>
+                    <p>0770495848</p>
+                    <a href="tel:0770495848" class="btn btn-red">اتصال</a>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>العنوان</h3>
+                    <p>جامعة جدارا</p>
+                    <a href="https://maps.app.goo.gl/tr3EwDhUUTyKpbgR6?g_st=com.google.maps.preview.copy" target="_blank" class="btn btn-blue">عرض على الخريطة</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- تذييل الصفحة -->
+    <footer style="background: linear-gradient(135deg, var(--primary-purple), var(--primary-purple-dark)); color: white;">
+        <div class="container">
+            <div style="text-align: center; padding: 30px 0;">
+                <img src="https://i.ibb.co/qLk7ZYZT/bng.png" alt="شعار نادي إسناد" style="height: 60px; margin-bottom: 20px; filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.3));">
+                <h3 style="margin-bottom: 20px; text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);">نادي إسناد لتكنولوجيا المعلومات</h3>
+                <p style="margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto; text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);">
+                    مجتمع طلابي يهدف إلى تطوير المهارات التقنية والبرمجية، وتنمية القدرات العملية والأكاديمية
+                </p>
+                <div class="social-links" style="justify-content: center;">
+                    <a href="https://www.facebook.com/share/16SUP6VhK4/?mibextid=wwXIfr" style="background-color: rgba(255, 255, 255, 0.2); color: white; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/esnaad_team" style="background-color: rgba(255, 255, 255, 0.2); color: white; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@esnaadteam" style="background-color: rgba(255, 255, 255, 0.2); color: white; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div style="text-align: center; padding: 20px 0; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+                <p style="text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);">&copy; 2025 نادي إسناد لتكنولوجيا المعلومات - جامعة جدارا. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // كود JavaScript متقدم مع تأثيرات قوية
+        
+        // تهيئة جسيمات الخلفية
+        if (typeof particlesJS !== 'undefined') {
+            particlesJS('particles-js', {
+                particles: {
+                    number: { value: 60, density: { enable: true, value_area: 800 } },
+                    color: { value: "#ffffff" },
+                    shape: { type: "circle" },
+                    opacity: { value: 0.5, random: true },
+                    size: { value: 3, random: true },
+                    line_linked: { enable: true, distance: 150, color: "#ffffff", opacity: 0.4, width: 1 },
+                    move: { enable: true, speed: 2, direction: "none", random: true, straight: false, out_mode: "out" }
+                },
+                interactivity: {
+                    detect_on: "canvas",
+                    events: {
+                        onhover: { enable: true, mode: "repulse" },
+                        onclick: { enable: true, mode: "push" }
+                    }
+                }
+            });
+        }
+
+        // إدارة الوضع الليلي
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        let darkMode = false;
+
+        // التحقق من تفضيلات المستخدم
+        if (localStorage.getItem('darkMode')) {
+            darkMode = localStorage.getItem('darkMode') === 'enabled';
+            updateTheme();
+        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            darkMode = true;
+            updateTheme();
+        }
+
+        themeToggle.addEventListener('click', () => {
+            darkMode = !darkMode;
+            localStorage.setItem('darkMode', darkMode ? 'enabled' : 'disabled');
+            updateTheme();
+        });
+
+        function updateTheme() {
+            if (darkMode) {
+                body.classList.add('dark-mode');
+                document.documentElement.style.setProperty('--background', 'var(--dark-bg)');
+                document.documentElement.style.setProperty('--text', 'var(--dark-text)');
+                document.documentElement.style.setProperty('--card', 'var(--dark-card)');
+                document.documentElement.style.setProperty('--nav', 'var(--dark-nav)');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                body.classList.remove('dark-mode');
+                document.documentElement.style.setProperty('--background', 'var(--light-bg)');
+                document.documentElement.style.setProperty('--text', 'var(--light-text)');
+                document.documentElement.style.setProperty('--card', 'var(--light-card)');
+                document.documentElement.style.setProperty('--nav', 'var(--light-nav)');
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+        }
+
+        // القائمة المتنقلة
+        const burger = document.querySelector('.burger');
+        const navLinks = document.querySelector('.nav-links');
+
+        burger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            burger.classList.toggle('active');
+            
+            // إيقاف التمرير عند فتح القائمة
+            if (navLinks.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // إغلاق القائمة عند النقر على رابط
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                burger.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+
+        // تصفية المشاريع
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(btn => btn.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const filter = btn.getAttribute('data-filter');
+                
+                projectCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'block';
+                        card.classList.add('fade-in');
+                    } else {
+                        card.style.display = 'none';
+                        card.classList.remove('fade-in');
+                    }
+                });
+            });
+        });
+
+        // تبديل تبويبات الأهداف
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tabId = btn.getAttribute('data-tab');
+                
+                tabBtns.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                
+                btn.classList.add('active');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // تأثيرات التمرير
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        function checkScroll() {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkScroll);
+        window.addEventListener('load', checkScroll);
+
+        // التمرير السلس
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 70,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // تأثيرات إضافية
+        function initAnimations() {
+            // تأثير الطفو للعناصر
+            const floatingElements = document.querySelectorAll('.floating');
+            floatingElements.forEach(el => {
+                el.style.animationDelay = `${Math.random() * 2}s`;
+            });
+            
+            // تأثير النبض للأزرار
+            const pulseElements = document.querySelectorAll('.pulse');
+            pulseElements.forEach(el => {
+                el.style.animationDelay = `${Math.random() * 2}s`;
+            });
+        }
+
+        initAnimations();
+    </script>
+</body>
+</html>
